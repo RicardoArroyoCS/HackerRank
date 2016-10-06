@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Challenge\CommonSubstring.cs" />
     <Compile Include="Challenge\DeleteOdd.cs" />
+    <Compile Include="Challenge\LinkedList.cs" />
     <Compile Include="Challenge\MergedString.cs" />
     <Compile Include="Challenge\Comparator.cs" />
     <Compile Include="Challenge\Playlist.cs" />
