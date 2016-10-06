@@ -48,7 +48,6 @@
     <Compile Include="Challenge\LinkedList.cs" />
     <Compile Include="Challenge\MergedString.cs" />
     <Compile Include="Challenge\Comparator.cs" />
-    <Compile Include="Challenge\MinimumAmount.cs" />
     <Compile Include="Challenge\Playlist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
