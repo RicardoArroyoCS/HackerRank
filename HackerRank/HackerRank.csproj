@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Challenge\ChallengeDriver.cs" />
     <Compile Include="Challenge\CommonSubstring.cs" />
-    <Compile Include="Challenge\DeleteOdd.cs" />
     <Compile Include="Challenge\LinkedList.cs" />
     <Compile Include="Challenge\MergedString.cs" />
     <Compile Include="Challenge\Comparator.cs" />

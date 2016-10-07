@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Challenge
+namespace HackerRank.Challenge
 {
-    public class LinkedList
+    public class SinglyLinkedList
     {
-        public LinkedList(int value)
+        public SinglyLinkedList(int value)
         {
             Value = value;
         }
@@ -18,7 +18,7 @@ namespace Challenge
             set;
         }
 
-        public LinkedList Next
+        public SinglyLinkedList Next
         {
             get;
             set;
@@ -27,85 +27,122 @@ namespace Challenge
 
     public class LinkedListUtil
     {
-        public static LinkedList RemoveOdds1(LinkedList head)
+        public static SinglyLinkedList RemoveOdds(SinglyLinkedList head)
         {
-            // Does not work because keeps reference to old head. Cannot be reassigned by new operator for variable
-            LinkedList current = head;
+            SinglyLinkedList current = head;
+            SinglyLinkedList answerHead = null;
+            SinglyLinkedList answerHeadItr = new SinglyLinkedList(0);
 
-            while(current != null)
+            if(head == null)
             {
-                if (IsNodeOdd(current) && current.Next != null)
-                {
-                    LinkedList temp = new LinkedList(current.Next.Value);
-                    temp.Next = current.Next.Next;
-                    current = temp;
-                }
-                else
-                {
-                    current = current.Next;
-                }
+                return null;
             }
-
-            return head;
-        }
-
-        public static LinkedList RemoveOdds2(LinkedList head)
-        {
-            LinkedList current = head;
-            LinkedList answerHead = null;
 
             while (current != null)
             {
-                if (IsNodeOdd(current))
+                if (!IsNodeOdd(current))
                 {
-                    if(current.Next != null)
+                    if (answerHead == null)
                     {
-                        LinkedList temp = new LinkedList(current.Next.Value);
-                        temp.Next = current.Next.Next;
-                        current = temp;
+                        answerHeadItr = current;
+                        answerHead = answerHeadItr;
                     }
                     else
                     {
-                        current = null;
+                        answerHeadItr.Next = current;
+                        answerHeadItr = answerHeadItr.Next;
                     }
-
                 }
                 else
                 {
-                    if(answerHead == null)
-                    {
-                        answerHead = current;
-                    }
-                    current = current.Next;
+                    answerHeadItr.Next = null;
                 }
+
+                current = current.Next;
             }
 
             return answerHead;
         }
 
-        public static bool IsNodeOdd(LinkedList node)
+        public static SinglyLinkedList RemoveOddsv2(SinglyLinkedList list)
+        {
+            SinglyLinkedList head = null;
+            SinglyLinkedList headItr = null;
+            SinglyLinkedList current = list;
+            bool isHeadSet = false;
+
+            if (list == null)
+            {
+                return null;
+            }
+
+            if (!IsNodeOdd(list))
+            {
+                isHeadSet = true;
+                headItr = new SinglyLinkedList(current.Value);
+                head = headItr;
+            }
+
+            while (current.Next != null)
+            {
+                current = current.Next;
+
+                if (!IsNodeOdd(current))
+                {
+                    if (!isHeadSet)
+                    {
+                        headItr = new SinglyLinkedList(current.Value);
+                        head = headItr;
+                        isHeadSet = true;
+                    }
+                    else
+                    {
+                        headItr.Next = new SinglyLinkedList(current.Value);
+                        headItr = headItr.Next;
+                    }
+                }
+                else
+                {
+                    headItr.Next = null;
+                }
+            }
+
+            return head;
+        }
+
+        public static bool IsNodeOdd(SinglyLinkedList node)
         {
             return node.Value % 2 != 0;
         }
 
-        public static LinkedList CreateLinkedList(int[] values)
+        public static SinglyLinkedList CreateLinkedList(int[] values)
         {
-            LinkedList head = null;
-            LinkedList current = null;
+            SinglyLinkedList head = null;
+            SinglyLinkedList current = null;
             foreach(int value in values)
             {
                 if(head == null)
                 {
-                    head = new LinkedList(value);
+                    head = new SinglyLinkedList(value);
                     current = head;
                 }
                 else
                 {
-                    LinkedList next = (current.Next = new LinkedList(value));
+                    SinglyLinkedList next = (current.Next = new SinglyLinkedList(value));
                     current = current.Next;
                 }
             }
             return head;
+        }
+
+        public static int PrintChildrenToConsole(SinglyLinkedList node)
+        {
+            if (node == null)
+            {
+                return 1;
+            }
+            Console.Write($" {node.Value} ");
+            return PrintChildrenToConsole(node.Next);
         }
     }
 }
