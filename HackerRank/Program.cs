@@ -13,9 +13,12 @@ namespace HackerRank
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static void Main()
+        public static void Main()
         {
-            ChallengeDriver.Run();
+            //ChallengeDriver.Run();
+            Algorithms.AlgorithmDriver.Run();
+
+            Console.ReadLine();
         }
     }
 }

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C078F9D1-CA4D-4769-8237-DCA6F5E322AF}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HackerRank</RootNamespace>
     <AssemblyName>HackerRank</AssemblyName>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,12 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\AlgorithmCategory.cs" />
+    <Compile Include="Algorithms\AlgorithmDriver.cs" />
+    <Compile Include="Algorithms\Warmup\Warmup.cs" />
+    <Compile Include="ICategory.cs" />
     <Compile Include="Challenge\ChallengeDriver.cs" />
     <Compile Include="Challenge\CommonSubstring.cs" />
     <Compile Include="Challenge\LinkedList.cs" />
     <Compile Include="Challenge\MergedString.cs" />
     <Compile Include="Challenge\Comparator.cs" />
     <Compile Include="Challenge\Playlist.cs" />
+    <Compile Include="Runnable.cs" />
+    <Compile Include="ProblemAttribute.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -70,6 +79,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
