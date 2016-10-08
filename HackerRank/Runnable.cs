@@ -22,9 +22,17 @@ namespace HackerRank
             }
         }
 
-        protected void WriteOutput(string output)
+        protected void WriteOutput(string output, long? timeSpent = null)
         {
-            Console.WriteLine($"Output: {output}");
+            string message = $"\tOutput: {output}";
+
+            if(timeSpent.HasValue)
+            {
+                message += $" Time: {timeSpent}";
+            }
+
+            Console.WriteLine($"{message}\n");
+
         }
     }
 }
