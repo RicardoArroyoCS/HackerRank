@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerRank", "HackerRank\HackerRank.csproj", "{C078F9D1-CA4D-4769-8237-DCA6F5E322AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttributeRunner", "AnnotationRunner\AttributeRunner.csproj", "{39CD596E-A0FC-42CD-91BA-33E169062F6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C078F9D1-CA4D-4769-8237-DCA6F5E322AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C078F9D1-CA4D-4769-8237-DCA6F5E322AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C078F9D1-CA4D-4769-8237-DCA6F5E322AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39CD596E-A0FC-42CD-91BA-33E169062F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39CD596E-A0FC-42CD-91BA-33E169062F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39CD596E-A0FC-42CD-91BA-33E169062F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39CD596E-A0FC-42CD-91BA-33E169062F6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

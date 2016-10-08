@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using HackerRank.Algorithms;
 
 namespace HackerRank.Algorithms.Warmup
 {
@@ -11,8 +12,16 @@ namespace HackerRank.Algorithms.Warmup
         private const string _section = "Warmup";
         private static readonly Warmup _instance = new Warmup();
 
+        public static Warmup Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+
         #region AVeryBigSum
-        [Problem(_category, _section)]
+        [Problem(_category, _section, "AVeryBigSum")]
         public void AVeryBigSumMain()
         {
             int[] arr = new int[]
@@ -36,17 +45,9 @@ namespace HackerRank.Algorithms.Warmup
                 sum += val;
             }
 
-            Console.WriteLine($"AVeryBigSum: {sum}");
+            WriteOutput(sum.ToString());
         }
         #endregion
-
-        public static Warmup Instance
-        {
-            get
-            {
-                return _instance;
-            }
-        }
 
         public override void Run()
         {

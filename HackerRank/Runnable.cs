@@ -1,22 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using AttributeRunner;
 
 namespace HackerRank
 {
-    public abstract class Runnable
+    public abstract class Runnable : AttributeRunner<ProblemAttribute>
     {
-        protected void Run(Object obj)
+        public Runnable()
+            : base(new ProblemAttribute())
         {
-            MethodInfo[] methods = obj.GetType().GetMethods().
-                Where(m => m.GetCustomAttributes(typeof(ProblemAttribute), false).Length > 0).ToArray();
+            base.OnBeforeRunMethod += Runnable_OnBeforeRunMethod;
+        }
 
-            foreach (MethodInfo method in methods)
+        private void Runnable_OnBeforeRunMethod(object sender, AttributeEventArgs e)
+        {
+            ProblemAttribute foundAttribute = e.FoundAttribute as ProblemAttribute;
+            if (foundAttribute != null)
             {
-                method.Invoke(this, null);
+                Console.WriteLine($"Running: {foundAttribute.Category}:{foundAttribute.Section} - {foundAttribute.TestName}");
             }
+        }
+
+        protected void WriteOutput(string output)
+        {
+            Console.WriteLine($"Output: {output}");
         }
     }
 }
