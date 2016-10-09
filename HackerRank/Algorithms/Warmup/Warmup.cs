@@ -152,6 +152,155 @@ namespace HackerRank.Algorithms.Warmup
         }
         #endregion
 
+        #region Plus Minus
+        [Problem(_category, _section, "PlusMinus")]
+        public void PlusMinusMain()
+        {
+            int[] arr = new int[] { -4, 3, -9, 0, 4, 1 };
+
+            PlusMinus(arr, arr.Length);
+        }
+
+        private void PlusMinus(int[] arr, int length)
+        {
+            int positiveNumbers = 0;
+            int negativeNumbers = 0;
+            int zeroNumbers = 0;
+
+            foreach(int number in arr)
+            {
+                if(number == 0)
+                {
+                    zeroNumbers++;
+                }
+                else if(number > 0)
+                {
+                    positiveNumbers++;
+                }
+                else
+                {
+                    negativeNumbers++;
+                }
+            }
+
+            double positveNumberFraction = CalculateFraction(positiveNumbers, length);
+            double negativeNumberFraction = CalculateFraction(negativeNumbers, length);
+            double zeroNumberFraction = CalculateFraction(zeroNumbers, length);
+
+            Console.WriteLine($"{positveNumberFraction}\n{negativeNumberFraction}\n{zeroNumberFraction}");
+        }
+
+        private double CalculateFraction(int number, int total)
+        {
+            return Math.Round((float)number / (float)total, 6);
+        }
+
+        #endregion
+
+        #region Staircase
+        [Problem(_category, _section, "Staircase")]
+        public void StairCaseMain()
+        {
+            int staircaseRows = 4;
+
+            Staircase(staircaseRows);
+            StaircaseEnhanced(staircaseRows);
+        }
+
+        private void Staircase(int n)
+        {
+            StringBuilder builder = new StringBuilder();
+            string spaces = " ";
+            string step = "#";
+            int numOfSpaces = n - 1;
+            string valToAppend = string.Empty;
+
+            Stopwatch.StartNew();
+
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < numOfSpaces; j++)
+                {
+                    builder.Append(spaces);
+                }
+                for (int k = 0; k < n - numOfSpaces; k++)
+                {
+                    builder.Append(step);
+                }
+                builder.Append("\n");
+                numOfSpaces--;
+            }
+
+            long timeSpent = Stopwatch.GetTimestamp();
+
+            WriteOutput($"\n{builder.ToString()}", timeSpent);
+        }
+
+        private void Staircase2(int n)
+        {
+            StringBuilder builder = new StringBuilder();
+            string spaces = " ";
+            string step = "#";
+            int numOfSpaces = n - 1;
+            string valToAppend = string.Empty;
+
+            Stopwatch.StartNew();
+
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 0; j < n - i; j++)
+                {
+                    builder.Append(spaces);
+                }
+                for (int k = 0; k < i; k++)
+                {
+                    builder.Append(step);
+                }
+                builder.Append("\n");
+                numOfSpaces--;
+            }
+
+            long timeSpent = Stopwatch.GetTimestamp();
+
+            WriteOutput($"\n{builder.ToString()}", timeSpent);
+        }
+
+        private void StaircaseEnhanced(int n)
+        {
+            StringBuilder builder = new StringBuilder();
+            string spaces = " ";
+            string step = "#";
+            int numOfSpaces = n - 1;
+            string valueToAppend = string.Empty;
+
+            Stopwatch.StartNew();
+
+            for (int i = 1; i <= n; i++)
+            {
+                for(int j = 0; j< n; j++)
+                {
+                    if(j < n-i)
+                    {
+                        valueToAppend = spaces;
+                    }
+                    else
+                    {
+                        valueToAppend = step;
+                    }
+
+                    builder.Append(valueToAppend);
+                }
+                builder.Append("\n");
+            }
+
+            long timeSpent = Stopwatch.GetTimestamp();
+
+            WriteOutput($"\n{builder.ToString()}", timeSpent);
+        }
+
+        #endregion
+
         public override void Run()
         {
             base.Run(this);
