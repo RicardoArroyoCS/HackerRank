@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -299,6 +300,67 @@ namespace HackerRank.Algorithms.Warmup
             WriteOutput($"\n{builder.ToString()}", timeSpent);
         }
 
+        #endregion
+
+        #region Time Conversion
+        [Problem(_category, _section, "TimeConversion")]
+        public void TimeConversion()
+        {
+            string time = "07:05:45PM";
+            TimeConversion(time);
+            TimeConversionEnhanced(time);
+        }
+
+        private void TimeConversion(string time)
+        {
+            string militaryTime = string.Empty;
+            string hour, minutes, seconds, timeOfDay;
+            string[] timeArray = time.Split(':');
+
+            if(timeArray.Count() < 1)
+            {
+                throw new Exception("Invalid time format");
+            }
+
+            timeOfDay = timeArray[2].Contains("AM") ? "AM" : "PM";
+            int intVal;
+
+            if(int.TryParse(timeArray[0], out intVal))
+            {
+                if (timeOfDay.Contains("PM"))
+                {
+                    hour = (intVal + 12).ToString();
+                }
+                else
+                {
+                    hour = (intVal < 12) ? timeArray[0] : "00";
+                }
+            }
+            else
+            {
+                throw new Exception("Invalid hour format");
+            }
+
+            minutes = timeArray[1];
+            seconds = timeArray[2].Replace(timeOfDay, string.Empty);
+
+            militaryTime = string.Format($"{hour}:{minutes}:{seconds}");
+
+            WriteOutput(militaryTime);
+        }
+
+        private void TimeConversionEnhanced(string time)
+        {
+            DateTime date;
+            string militaryTime = string.Empty;
+
+            if (DateTime.TryParse(time, out date))
+            {
+                militaryTime = date.ToString("HH:mm:ss");
+            }
+
+            WriteOutput(militaryTime);
+        }
         #endregion
 
         public override void Run()
