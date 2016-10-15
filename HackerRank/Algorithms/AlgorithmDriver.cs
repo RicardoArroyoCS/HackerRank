@@ -11,6 +11,7 @@ namespace HackerRank.Algorithms
         public static void Run()
         {
             Warmup.Warmup.Instance.Run();
+            Constructive_Algorithms.ConstructiveAlgorithms.Instance.Run();
         }
     }
 }

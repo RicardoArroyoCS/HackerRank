@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Algorithms\AlgorithmCategory.cs" />
     <Compile Include="Algorithms\AlgorithmDriver.cs" />
+    <Compile Include="Algorithms\Constructive Algorithms\ConstructiveAlgorithms.cs" />
     <Compile Include="Algorithms\Warmup\Warmup.cs" />
     <Compile Include="ICategory.cs" />
     <Compile Include="Challenge\ChallengeDriver.cs" />
