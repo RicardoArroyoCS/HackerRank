@@ -363,6 +363,65 @@ namespace HackerRank.Algorithms.Warmup
         }
         #endregion
 
+        #region Circular Array Rotation
+        [Problem(_category, _section, "CircularArrayRotation")]
+        public void CircularArrayRotation()
+        {
+            int n = 3;
+            int k = 2;
+            int q = 3;
+            int[] a = new int[]{ 1, 2, 3 };
+            int[] m = new int[] { 0, 1, 2 };
+
+            CircularArrayRotation(n, k, q, a, m);
+        }
+
+        private void CircularArrayRotation(int n, int k, int q, int[] a, int[] m)
+        {
+            int current = -1;
+            int temp;
+
+            if(k >= 1)
+            {
+                for (int count = 0; count < k; count++)
+                {
+                    if (n < 1)
+                    {
+                        break;
+                    }
+
+                    for (int j = 1; j < n; j++)
+                    {
+                        if (j == n - 1)
+                        {
+                            temp = a[j];
+                            a[j] = current;
+                            a[0] = temp;
+                        }
+                        else
+                        {
+                            if (current == -1)
+                            {
+                                current = a[j - 1];
+                            }
+                            temp = a[j];
+                            a[j] = current;
+
+                            current = temp;
+                        }
+                    }
+                    current = -1;
+                }
+            }
+
+            for(int i =0; i < m.Length; i++)
+            {
+                WriteOutput($"{a[m[i]]}");
+            }            
+        }
+
+        #endregion
+
         public override void Run()
         {
             base.Run(this);
